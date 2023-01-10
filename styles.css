@@ -1,0 +1,28 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  background: black;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+/* Temp visual layout indicators */
+.player {
+    background-color: green;
+}
+
+.game-board {
+    background-color: red;
+}
+
+.computer {
+    background-color: blue;
+}
