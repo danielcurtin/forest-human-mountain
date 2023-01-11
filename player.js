@@ -1,8 +1,7 @@
 class Player {
-    constructor(username, selectedAv, gameChoice) {
+    constructor(username, selectedAv) {
         this.name = username;
         this.token = selectedAv;
-        this.selected = gameChoice;
         this.wins = 0;
     };
 

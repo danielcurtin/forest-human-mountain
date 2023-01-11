@@ -14,6 +14,7 @@
             <div class="avatar player-av" id="userAvatar">🕹️</div>
             <div class="name" id="userName">Player</div>
             <div class="wins" id="userWins">Wins: 0</div>
+            <button class="change-diff-button hidden" id="changeDiff">Change Mode</button>
         </aside>
         <section class="game-board" id="gameBoardSection">
             <h1 class="game-name" id="gameNameHeader">Rock, Paper, Scissors</h1>
@@ -26,12 +27,34 @@
             </div>
             <div class="game-diff hard" id="hard" data-diff="hard">
                 <h4 class="big-diff" data-diff="hard">Hard</h4>
-                🪨 Rock beats Scissors & Rain<br>
+                🪨 Rock beats Scissors & Water<br>
                 ✂️ Scissors beats Paper & Fire<br>
-                📄 Paper beats Rock & Rain<br>
-                💧 Rain beats Rock & Fire<br>
+                📄 Paper beats Rock & Water<br>
+                💧 Water beats Rock & Fire<br>
                 🔥 Fire beats Paper & Scissors<br>
-            </div> 
+            </div>
+            <div class="choices-container">
+                <div class="rock choice hidden" id="rockOpt">
+                    <img src="https://images.unsplash.com/photo-1598438924166-6d89ca57f248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Large mountain">
+                    <div class="choice-bg-circle">🪨</div>
+                </div>
+                <div class="paper choice hidden" id="paperOpt">
+                    <img src="https://images.unsplash.com/photo-1539037397405-a7554159b2ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Trees in a forest">
+                    <div class="choice-bg-circle">📄</div>
+                </div>
+                <div class="scissors choice hidden" id="scissorsOpt">
+                    <img src="https://static.wixstatic.com/media/cd92ed_8645507aeedd4dd482fc0dbe5420128b~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85/cd92ed_8645507aeedd4dd482fc0dbe5420128b~mv2.jpg" alt="Comically large metal scissors with a black handle">
+                    <div class="choice-bg-circle">✂️</div>
+                </div>
+                <div class="fire choice hidden" id="fireOpt">
+                    <img src="https://images.unsplash.com/photo-1618325508550-951512a1e82d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="campfire">
+                    <div class="choice-bg-circle">🔥</div>
+                </div>
+                <div class="water choice hidden" id="waterOpt">
+                    <img src="https://images.unsplash.com/photo-1444944232907-0b9e9ace348c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=763&q=80" alt="Ocean waves">
+                    <div class="choice-bg-circle">💧</div>
+                </div>
+            </div>
         </section>
         <aside class="computer" id="compBar">
             <div class="avatar comp-av" id="compAvatar">👾</div>

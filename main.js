@@ -4,30 +4,37 @@ var compPlayer = new Player();
 var game = new Game(userPlayer, compPlayer);
 
 var gameBoard = document.querySelector('#gameBoardSection');
+var gameHeader = document.querySelector('#gameState');
+var playerBar = document.querySelector('#playerBar');
+var changeDiffBtn = document.querySelector('#changeDiff');
 var classicDiff = document.querySelector('#classic');
 var hardDiff = document.querySelector('#hard');
 
+var rock = document.querySelector('#rockOpt');
+var paper = document.querySelector('#paperOpt');
+var scissors = document.querySelector('#scissorsOpt');
+var fire = document.querySelector('#fireOpt');
+var water = document.querySelector('#waterOpt');
+
+
 window.addEventListener('load', promptUser);
 gameBoard.addEventListener('click', function(event) {
-    chooseDiff(event);
+    if (event.target.dataset.diff) {
+        updateDiff(event.target.dataset.diff);
+        showGame(event.target.dataset.diff);
+        show(changeDiffBtn);
+    };
+});
+playerBar.addEventListener('click', function(event) {
+    if (event.target.id === "changeDiff") {
+        resetDiffMenu(event);
+    };
 });
 
-
-function promptUser() {
-    // var userName = .value;
-};
-
-function chooseDiff(event) {
-    if (event.target.dataset.diff === "classic") {
-        updateDifficulty(event.target.dataset.diff);
-    } else if (event.target.dataset.diff === "hard") {
-        updateDifficulty(event.target.dataset.diff);
-    };
-};
-
-function updateDifficulty(diff) {
+function updateDiff(diff) {
     hide(classicDiff);
     hide(hardDiff);
+    gameHeader.innerText = "Make your pick!";
     game.difficulty = diff;
 };
 
@@ -37,4 +44,35 @@ function hide(element) {
 
 function show(element) {
     element.classList.remove('hidden');
+};
+
+function resetDiffMenu() {
+    hide(changeDiffBtn);
+    hideGame();
+    show(classicDiff);
+    show(hardDiff);
+    gameHeader.innerText = "Choose your difficulty!";
+};
+
+function showGame(diff) {
+    show(rock);
+    show(paper);
+    show(scissors);
+
+    if (diff === "hard") {
+        show(fire);
+        show(water);
+    };
+};
+
+function hideGame() {
+    hide(rock);
+    hide(paper);
+    hide(scissors);
+    hide(fire);
+    hide(water);
+}
+
+function promptUser() {
+    // var userName = .value;
 };
