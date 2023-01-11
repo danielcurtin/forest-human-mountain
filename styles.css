@@ -117,10 +117,6 @@ aside {
   background-color: rgba(0 0 0 / 80%);
 }
 
-.hidden {
-  display: none;
-}
-
 .choices-container {
   height: 70%;
   width: 100%;
@@ -176,18 +172,18 @@ aside {
 }
 
 .choice-bg-circle {
-    height: 40%;
-    width: 40%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    font-size: 5rem;
-    border-radius: 10rem;
-    box-shadow: 0 5px 15px 10px rgba(0 0 0 / 30%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 40%;
+  width: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 5rem;
+  border-radius: 10rem;
+  box-shadow: 0 3px 15px 10px rgba(0 0 0 / 30%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   }
 
 .rock > div {
@@ -195,17 +191,21 @@ aside {
 }
 
 .paper > div {
-    background-color: rgb(4, 40, 10);
+  background-color: rgb(4, 40, 10);
 }
 
 .scissors > div {
-    background-color: rgb(53, 5, 46);
+  background-color: rgb(53, 5, 46);
 }
 
 .fire > div {
-    background-color: rgb(52, 0, 0);
+  background-color: rgb(52, 0, 0);
 }
 
 .water > div {
-    background-color: rgb(0, 1, 52);
+  background-color: rgb(0, 1, 52);
 }
+
+.hidden {
+  display: none;
+  }
