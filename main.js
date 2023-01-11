@@ -27,7 +27,7 @@ gameBoard.addEventListener('click', function(event) {
         showGame(event.target.dataset.diff);
         show(changeDiffBtn);
     } else if (event.target.dataset.choice) {
-        game.playRound(event.target.dataset.choice);
+        runGame(event.target.dataset.choice);
     };
 });
 playerBar.addEventListener('click', function(event) {
@@ -85,6 +85,37 @@ function compChoice() {
         compPlayer.takeTurn(choices[Math.floor(Math.random() * 5)]);
     };
 };
+
+function runGame(choice) {
+    game.playRound(choice);
+}
+
+function placeUserAv(choiceElement) {
+    var userChoiceAv = document.createElement('div');
+
+    userChoiceAv.setAttribute('class', 'avatar');
+    userChoiceAv.classList.add('temp');
+    userChoiceAv.innerText = userPlayer.token;
+    choiceElement.appendChild(userChoiceAv);
+};
+
+function placeCompAv(choiceElement) {
+    var compChoiceAv = document.createElement('div');
+
+    compChoiceAv.setAttribute('class', 'avatar');
+    compChoiceAv.classList.add('comp-player-av');
+    compChoiceAv.classList.add('temp');
+    compChoiceAv.innerText = compPlayer.token;
+    choiceElement.appendChild(compChoiceAv);
+}
+
+function deleteChoiceAvs() {
+    var toDelete = document.querySelectorAll('.temp');
+
+    for (var i = 0; i < toDelete.length; i++) {
+        toDelete[i].remove();
+    }
+}
 
 function updateUser() {
     userAv.innerText = userPlayer.token;
