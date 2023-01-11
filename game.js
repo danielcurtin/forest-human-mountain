@@ -1,8 +1,8 @@
 class Game {
-    constructor(player, comp, diff) {
+    constructor(player, comp) {
         this.player = player;
         this.computer = comp;
-        this.difficulty = diff;
+        this.difficulty = undefined;
     };
 
     playRound() {

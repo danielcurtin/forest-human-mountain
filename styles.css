@@ -76,7 +76,7 @@ aside {
 }
 
 .game-diff:hover {
-    background-color: rgba(0 0 0 / 80%);
+  background-color: rgba(0 0 0 / 80%);
 }
 
 .classic {
@@ -95,4 +95,8 @@ aside {
   font-size: 2rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
 }
