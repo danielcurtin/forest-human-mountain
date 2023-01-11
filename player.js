@@ -8,6 +8,5 @@ class Player {
 
     takeTurn(choice) {
         this.choice = choice;
-        console.log(choice);
     };
 };

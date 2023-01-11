@@ -1,6 +1,6 @@
 var userPlayer = new Player();
 var compPlayer = new Player("Bot", "👾");
-var game = new Game(userPlayer, compPlayer);
+var game = new Game(userPlayer, compPlayer, difficulty);
 var choices = ["rock", "paper", "scissors", "fire", "water"];
 
 var gameBoard = document.querySelector('#gameBoardSection');
@@ -13,11 +13,16 @@ var hardDiff = document.querySelector('#hard');
 var userAv = document.querySelector('#userAvatar');
 var userDisplayName = document.querySelector('#userName');
 
+var userWins = document.querySelector('#userWins');
+var compWins = document.querySelector('#compWins');
+
 var rock = document.querySelector('#rockOpt');
 var paper = document.querySelector('#paperOpt');
 var scissors = document.querySelector('#scissorsOpt');
 var fire = document.querySelector('#fireOpt');
 var water = document.querySelector('#waterOpt');
+
+var difficulty;
 
 
 window.addEventListener('load', updateUser);
@@ -40,7 +45,8 @@ function updateDiff(diff) {
     hide(classicDiff);
     hide(hardDiff);
     gameHeader.innerText = "Make your pick!";
-    game.difficulty = diff;
+    difficulty = diff;
+    game.difficulty = difficulty;
 };
 
 function hide(element) {
@@ -120,4 +126,10 @@ function deleteChoiceAvs() {
 function updateUser() {
     userAv.innerText = userPlayer.token;
     userDisplayName.innerText = userPlayer.name;
+    updateWinsDisplay();
+};
+
+function updateWinsDisplay() {
+    userWins.innerText = `Wins: ${userPlayer.wins}`;
+    compWins.innerText = `Wins: ${compPlayer.wins}`;
 };
