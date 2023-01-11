@@ -10,9 +10,34 @@
 </head>
 <body>
     <main>
-        <section class="player" id="playerBar"></section>
-        <section class="game-board" id="gameBoardSection"></section>
-        <section class="computer" id="computerBar"></section>
+        <aside class="player" id="playerBar">
+            <div class="avatar player-av" id="userAvatar">🐺</div>
+            <div class="name" id="userName">Player</div>
+            <div class="wins" id="userWins">Wins: 0</div>
+        </aside>
+        <section class="game-board" id="gameBoardSection">
+            <h1 class="game-name" id="gameNameHeader">Rock, Paper, Scissors</h1>
+            <header class="game-header" id="gameState">Choose your difficulty!</header>
+            <div class="game-diff classic" id="classic">
+                <h4 class="big-diff">Classic</h4>
+                🪨 Rock beats Scissors<br>
+                ✂️ Scissors beats Paper<br>
+                📄 Paper beats Rock<br>
+            </div>
+            <div class="game-diff hard" id="hard">
+                <h4 class="big-diff">Hard</h4>
+                🪨 Rock beats Scissors & Rain<br>
+                ✂️ Scissors beats Paper & Fire<br>
+                📄 Paper beats Rock & Rain<br>
+                💧 Rain beats Rock & Fire<br>
+                🔥 Fire beats Paper & Scissors<br>
+            </div> 
+        </section>
+        <aside class="computer" id="compBar">
+            <div class="avatar comp-av" id="compAvatar">👾</div>
+            <div class="name" id="compName">Bot</div>
+            <div class="wins" id="compWins">Wins: 0</div>
+        </aside>
     </main>
     <script type="text/javascript" src="player.js"></script>
     <script type="text/javascript" src="game.js"></script>

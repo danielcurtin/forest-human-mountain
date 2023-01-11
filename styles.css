@@ -2,9 +2,9 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: black;
   margin: 0;
   padding: 0;
+  font-family: 'Rubik', sans-serif;
 }
 
 main {
@@ -12,17 +12,87 @@ main {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
+  background: #121212;
 }
 
-/* Temp visual layout indicators */
-.player {
-  background-color: green;
+aside {
+  background: #171717;
+  box-shadow: 15px 0 15px rgba(255 255 255 / 20%), -15px 0 15px rgba(255 255 255 / 20%);
 }
 
+.player,
+.computer,
 .game-board {
-  background-color: red;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
-.computer {
-  background-color: blue;
+.avatar,
+.name,
+.wins {
+  margin-top: 1vw;
+}
+
+.avatar {
+  height: 10vw;
+  width: 10vw;
+  font-size: 8vw;
+  text-align: center;
+  cursor: pointer;
+  background: #242424;
+  border-radius: 20rem;
+  border: solid 2px white;
+}
+
+.name {
+  font-size: 4rem;
+}
+
+.wins {
+  font-size: 3rem;
+}
+
+.game-name {
+  font-size: 5.8rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.game-header {
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+.game-diff {
+  width: 22%;
+  color: white;
+  background-color: rgba(0, 0, 0, 35%);
+  font-size: 1.3rem;
+  position: absolute;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.game-diff:hover {
+    background-color: rgba(0 0 0 / 80%);
+}
+
+.classic {
+  height: 18%;
+  text-align: center;
+  top: 35%;
+}
+
+.hard {
+  height: 24%;
+  text-align: center;
+  top: 60%;
+}
+
+.big-diff {
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
