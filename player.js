@@ -1,12 +1,12 @@
 class Player {
-    constructor(username, selectedAv, gameChoice) {
-        this.name = username;
-        this.token = selectedAv;
-        this.selected = gameChoice;
+    constructor(username, selectedAv) {
+        this.name = username || "Player";
+        this.token = selectedAv || "🕹️";
+        this.choice = undefined;
         this.wins = 0;
     };
 
-    takeTurn() {
-
+    takeTurn(choice) {
+        this.choice = choice;
     };
 };
