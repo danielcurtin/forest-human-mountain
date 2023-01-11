@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style> @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); </style>
     <link rel="stylesheet" href="styles.css">
-    <title>Rock Paper Scissors</title>
+    <title>Mountain Forest Human</title>
 </head>
 <body>
     <main>
@@ -17,34 +17,34 @@
             <button class="change-diff-button hidden" id="changeDiff">Change Mode</button>
         </aside>
         <section class="game-board" id="gameBoardSection">
-            <h1 class="game-name" id="gameNameHeader">Rock, Paper, Scissors</h1>
+            <h1 class="game-name" id="gameNameHeader">Mountain, Forest, Human</h1>
             <header class="game-header" id="gameState">Choose your difficulty!</header>
             <div class="game-diff classic" id="classic" data-diff="classic">
                 <h4 class="big-diff" data-diff="classic">- Classic -</h4>
-                🪨 Rock beats Scissors<br>
-                📄 Paper beats Rock<br>
-                ✂️ Scissors beats Paper<br>
+                🏔️ Mountain beats Human<br>
+                🌲 Forest beats Mountain<br>
+                👋 Human beats Forest<br>
             </div>
             <div class="game-diff hard" id="hard" data-diff="hard">
                 <h4 class="big-diff" data-diff="hard">- Hard -</h4>
-                🪨 Rock beats Scissors & Fire<br>
-                📄 Paper beats Rock & Water<br>
-                ✂️ Scissors beats Paper & Water<br>
-                🔥 Fire beats Paper & Scissors<br>
-                💧 Water beats Rock & Fire<br>
+                🏔️ Mountain beats Human & Fire<br>
+                🌲 Forest beats Mountain & Water<br>
+                👋 Human beats Forest & Water<br>
+                🔥 Fire beats Forest & Human<br>
+                💧 Water beats Mountain & Fire<br>
             </div>
             <div class="choices-container">
-                <div class="rock choice hidden" id="rockOpt">
-                    <img src="https://images.unsplash.com/photo-1598438924166-6d89ca57f248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Large mountain" data-choice="rock">
-                    <div class="choice-bg-circle" data-choice="rock">🪨</div>
+                <div class="mountain choice hidden" id="mountainOpt">
+                    <img src="https://images.unsplash.com/photo-1598438924166-6d89ca57f248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Large mountain" data-choice="mountain">
+                    <div class="choice-bg-circle" data-choice="mountain">🏔️</div>
                 </div>
-                <div class="paper choice hidden" id="paperOpt">
-                    <img src="https://images.unsplash.com/photo-1539037397405-a7554159b2ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Trees in a forest" data-choice="paper">
-                    <div class="choice-bg-circle" data-choice="paper">📄</div>
+                <div class="forest choice hidden" id="forestOpt">
+                    <img src="https://images.unsplash.com/photo-1539037397405-a7554159b2ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Trees in a forest" data-choice="forest">
+                    <div class="choice-bg-circle" data-choice="forest">🌲</div>
                 </div>
-                <div class="scissors choice hidden" id="scissorsOpt">
-                    <img src="https://static.wixstatic.com/media/cd92ed_8645507aeedd4dd482fc0dbe5420128b~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85/cd92ed_8645507aeedd4dd482fc0dbe5420128b~mv2.jpg" alt="Comically large metal scissors with a black handle" data-choice="scissors">
-                    <div class="choice-bg-circle" data-choice="scissors">✂️</div>
+                <div class="human choice hidden" id="humanOpt">
+                    <img src="https://images.unsplash.com/photo-1477146901578-40f6955116e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sprawling grey cityscape" data-choice="human">
+                    <div class="choice-bg-circle" data-choice="human">👋</div>
                 </div>
                 <div class="fire choice hidden" id="fireOpt">
                     <img src="https://images.unsplash.com/photo-1618325508550-951512a1e82d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="campfire" data-choice="fire">
