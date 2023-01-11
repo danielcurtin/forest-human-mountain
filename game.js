@@ -1,9 +1,16 @@
 class Game {
-    constructor(player, comp, diff) {
+    constructor(player, comp) {
         this.player = player || "Player";
         this.computer = comp;
-        this.difficulty = diff;
+        this.choices = ["mountain", "forest", "human", "fire", "water"];
+        this.difficulty = undefined;
         this.gameState = undefined;
+    };
+
+    updateDiff(diff) {
+        hide(classicDiff);
+        hide(hardDiff);
+        this.difficulty = diff;
     };
 
     playRound(choice) {
@@ -11,22 +18,27 @@ class Game {
         hideGame();
         show(document.querySelector(`.${choice}`));
         placeUserAv(document.querySelector(`.${choice}`));
-        setTimeout(this.compChoice, 1000);
-        setTimeout(function() {
+
+        setTimeout( () => {
+            this.compChoice();
+        }, 1000);
+
+        setTimeout( () => {
             show(document.querySelector(`.${compPlayer.choice}`));
             placeCompAv(document.querySelector(`.${compPlayer.choice}`));
-            game.determineGameState();
+            this.determineGameState();
             showGameResults();
-            game.updateWins();
+            this.updateWins();
         }, 1200);
+        
         setTimeout(this.resetGame, 3000);
     };
 
     compChoice() {
-        if (game.difficulty === "classic") {
-            compPlayer.takeTurn(choices[Math.floor(Math.random() * 3)]);
-        } else {
-            compPlayer.takeTurn(choices[Math.floor(Math.random() * 5)]);
+        if (this.difficulty === "classic") {
+            this.computer.takeTurn(game.choices[Math.floor(Math.random() * 3)]);
+        } else if(this.difficulty === "hard") {
+            this.computer.takeTurn(game.choices[Math.floor(Math.random() * 5)]);
         };
     };
 
@@ -58,7 +70,7 @@ class Game {
                 this.gameState = "win";
             };
         } else if (this.player.choice === "water") {
-            if (this.computer.choice === "forest" || this.computer.choice === "fire") {
+            if (this.computer.choice === "forest" || this.computer.choice === "human") {
                 this.gameState = "loss";
             } else {
                 this.gameState = "win";
@@ -72,12 +84,13 @@ class Game {
         } else if (this.gameState === "loss") {
             this.computer.wins++;
         };
+
         updateWinsDisplay();
     };
 
     resetGame() {
-        showGame(this.difficulty);
+        hideGame();
+        showGame();
         deleteChoiceAvs();
-        updateDiff(this.difficulty);
     };
 };

@@ -18,17 +18,15 @@ var water = document.querySelector('#waterOpt');
 
 var userPlayer = new Player();
 var compPlayer = new Player("Bot", "👾");
-var game = new Game(userPlayer, compPlayer, difficulty);
-var choices = ["mountain", "forest", "human", "fire", "water"];
-var difficulty;
+var game = new Game(userPlayer, compPlayer);
 
 
 
-window.addEventListener('load', updateUser);
+window.addEventListener('load', updateUserBar);
 
 gameBoard.addEventListener('click', function(event) {
     if (event.target.dataset.diff) {
-        updateDiff(event.target.dataset.diff);
+        game.updateDiff(event.target.dataset.diff);
         showGame();
     } else if (event.target.dataset.choice) {
         game.playRound(event.target.dataset.choice);
@@ -72,7 +70,7 @@ function hideGame() {
     hide(water);
 };
 
-function updateUser() {
+function updateUserBar() {
     userAv.innerText = userPlayer.token;
     userDisplayName.innerText = userPlayer.name;
 };
@@ -80,13 +78,6 @@ function updateUser() {
 function updateWinsDisplay() {
     userWins.innerText = `Wins: ${userPlayer.wins}`;
     compWins.innerText = `Wins: ${compPlayer.wins}`;
-};
-
-function updateDiff(diff) {
-    hide(classicDiff);
-    hide(hardDiff);
-    difficulty = diff;
-    game.difficulty = difficulty;
 };
 
 function resetDiffMenu() {
