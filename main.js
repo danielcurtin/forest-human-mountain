@@ -37,20 +37,25 @@ modal.addEventListener('click', event => {
         decrementBg();
     } else if (event.target.id === "rightBg") {
         incrementBg();
-    }
+    };
 });
 
 gameBoard.addEventListener('click', event => {
-    if (event.target.dataset.diff) {
+    if (gameBoard.dataset.active === "true") {
+        return;
+    } else if (event.target.dataset.diff) {
         game.updateDiff(event.target.dataset.diff);
         showGame();
     } else if (event.target.dataset.choice) {
         game.playRound(event.target.dataset.choice);
+        toggleActiveState();
     };
 });
 
 playerBar.addEventListener('click', event => {
-    if (event.target.id === "changeDiff") {
+    if (gameBoard.dataset.active === "true") {
+        return;
+    } else if (event.target.id === "changeDiff") {
         resetDiffMenu();
     };
 });
@@ -118,6 +123,14 @@ function hideGame() {
     hide(human);
     hide(fire);
     hide(water);
+};
+
+function toggleActiveState() {
+    if (gameBoard.dataset.active === "true") {
+        gameBoard.dataset.active = "false";
+    } else {
+        gameBoard.dataset.active = "true";
+    };
 };
 
 function updateUser() {

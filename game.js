@@ -89,5 +89,6 @@ class Game {
         hideGame();
         showGame();
         deleteChoiceAvs();
+        toggleActiveState();
     };
 };
