@@ -6,8 +6,8 @@ var hardDiff = document.querySelector('#hard');
 var changeDiffBtn = document.querySelector('#changeDiff');
 
 var userAv = document.querySelector('#userAvatar');
-var userDisplayName = document.querySelector('#userName');
 var selectedAvatar = document.querySelector('#selectedAv');
+var userDisplayName = document.querySelector('#userName');
 var userWins = document.querySelector('#userWins');
 var compWins = document.querySelector('#compWins');
 var modal = document.querySelector('#userModal');
@@ -18,11 +18,11 @@ var human = document.querySelector('#humanOpt');
 var fire = document.querySelector('#fireOpt');
 var water = document.querySelector('#waterOpt');
 
+var avatars = ["🕹️", "🐺", "🐣", "🦁", "🧸", "🎃", "⛄️", "🥨", "🍔", "🍕", "🎂"];
+var bgColors = ["#242424", "firebrick", "maroon", "orange", "gold", "goldenrod", "darkgreen", "seagreen", "lightskyblue", "steelblue", "lightpink","fuchsia", "orchid", "slateblue"];
 var userPlayer = new Player();
 var compPlayer = new Player("Bot", "👾");
 var game = new Game(userPlayer, compPlayer);
-var avatars = ["🕹️", "🐺", "🐣", "🦁", "🧸", "🎃", "⛄️", "🥨", "🍔", "🍕", "🎂"];
-var bgColors = ["#242424", "firebrick", "maroon", "orange", "gold", "goldenrod", "darkgreen", "seagreen", "lightskyblue", "steelblue", "lightpink","fuchsia", "orchid", "slateblue"]
 
 
 modal.addEventListener('click', event => {
