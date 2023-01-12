@@ -7,8 +7,10 @@ var changeDiffBtn = document.querySelector('#changeDiff');
 
 var userAv = document.querySelector('#userAvatar');
 var userDisplayName = document.querySelector('#userName');
+var selectedAvatar = document.querySelector('#selectedAv');
 var userWins = document.querySelector('#userWins');
 var compWins = document.querySelector('#compWins');
+var modal = document.querySelector('#userModal');
 
 var mountain = document.querySelector('#mountainOpt');
 var forest = document.querySelector('#forestOpt');
@@ -19,12 +21,26 @@ var water = document.querySelector('#waterOpt');
 var userPlayer = new Player();
 var compPlayer = new Player("Bot", "👾");
 var game = new Game(userPlayer, compPlayer);
+var avatars = ["🕹️", "🐺", "🐣", "🦁", "🧸", "🎃", "⛄️", "🥨", "🍔", "🍕", "🎂"];
+var bgColors = ["#242424", "firebrick", "maroon", "orange", "gold", "goldenrod", "darkgreen", "seagreen", "lightskyblue", "steelblue", "lightpink","fuchsia", "orchid", "slateblue"]
 
 
+modal.addEventListener('click', event => {
+    if (event.target.id === "modalSubmit") {
+        closeModal();
+        updateUser();
+    } else if (event.target.id === "leftAv") {
+        decrementAvatar();
+    } else if (event.target.id === "rightAv") {
+        incrementAvatar();
+    } else if (event.target.id === "leftBg") {
+        decrementBg();
+    } else if (event.target.id === "rightBg") {
+        incrementBg();
+    }
+});
 
-window.addEventListener('load', updateUserBar);
-
-gameBoard.addEventListener('click', function(event) {
+gameBoard.addEventListener('click', event => {
     if (event.target.dataset.diff) {
         game.updateDiff(event.target.dataset.diff);
         showGame();
@@ -33,7 +49,7 @@ gameBoard.addEventListener('click', function(event) {
     };
 });
 
-playerBar.addEventListener('click', function(event) {
+playerBar.addEventListener('click', event => {
     if (event.target.id === "changeDiff") {
         resetDiffMenu();
     };
@@ -47,6 +63,40 @@ function hide(element) {
 
 function show(element) {
     element.classList.remove('hidden');
+};
+
+function incrementAvatar() {
+    if (selectedAvatar.dataset.avatar * 1 + 1 < avatars.length) {
+        selectedAvatar.dataset.avatar++;
+        selectedAvatar.innerText = `${avatars[selectedAvatar.dataset.avatar]}`;
+    };
+};
+
+function decrementAvatar () {
+    if (selectedAvatar.dataset.avatar - 1 >= 0) {
+        selectedAvatar.dataset.avatar--;
+        selectedAvatar.innerText = `${avatars[selectedAvatar.dataset.avatar]}`;
+    };
+};
+
+function incrementBg() {
+    if (selectedAvatar.dataset.bg * 1 + 1 < bgColors.length) {
+        selectedAvatar.dataset.bg++;
+        selectedAvatar.style.background = `${bgColors[selectedAvatar.dataset.bg]}`;
+    };
+};
+
+function decrementBg() {
+    if (selectedAvatar.dataset.bg - 1 >= 0) {
+        selectedAvatar.dataset.bg--;
+        selectedAvatar.style.background = `${bgColors[selectedAvatar.dataset.bg]}`;
+    };
+};
+
+function closeModal() {
+    userPlayer.token = avatars[selectedAvatar.dataset.avatar];
+    userPlayer.bg = bgColors[selectedAvatar.dataset.bg];
+    hide(modal);
 };
 
 function showGame() {
@@ -70,8 +120,12 @@ function hideGame() {
     hide(water);
 };
 
-function updateUserBar() {
+function updateUser() {
+    var userInputName = document.querySelector('#userInputName');
+    userPlayer.name = userInputName.value;
+
     userAv.innerText = userPlayer.token;
+    userAv.style.background = userPlayer.bg;
     userDisplayName.innerText = userPlayer.name;
 };
 
@@ -94,6 +148,7 @@ function placeUserAv(choiceElement) {
     userChoiceAv.setAttribute('class', 'avatar');
     userChoiceAv.classList.add('temp');
     userChoiceAv.innerText = userPlayer.token;
+    userChoiceAv.style.background = userPlayer.bg;
     choiceElement.appendChild(userChoiceAv);
 };
 

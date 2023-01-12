@@ -21,16 +21,13 @@ class Game {
 
         setTimeout( () => {
             this.compChoice();
-        }, 1000);
-
-        setTimeout( () => {
-            show(document.querySelector(`.${compPlayer.choice}`));
-            placeCompAv(document.querySelector(`.${compPlayer.choice}`));
+            show(document.querySelector(`.${this.computer.choice}`));
+            placeCompAv(document.querySelector(`.${this.computer.choice}`));
             this.determineGameState();
             showGameResults();
             this.updateWins();
-        }, 1200);
-        
+        }, 1000);
+
         setTimeout(this.resetGame, 3000);
     };
 

@@ -1,7 +1,8 @@
 class Player {
-    constructor(username, selectedAv) {
-        this.name = username || "Player";
-        this.token = selectedAv || "🕹️";
+    constructor() {
+        this.name = "Player";
+        this.token = "🕹️";
+        this.bg = "#242424";
         this.choice = undefined;
         this.wins = 0;
     };

@@ -5,11 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style> @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); </style>
+    <script src="https://kit.fontawesome.com/6471591dde.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
     <title>Mountain Forest Human</title>
 </head>
 <body>
     <main>
+        <div class="user-modal-bg" id="userModal">
+            <div class="user-info-modal">
+                <div class="avatar-carousel">
+                    <i class="arrow fa-solid fa-circle-chevron-left" id="leftAv"></i>
+                    <i class="arrow fa-solid fa-circle-chevron-right" id="rightAv"></i>
+                    <div class="avatar" id="selectedAv" data-avatar="0" data-bg="0">🕹️</div>
+                    <i class="arrow fa-solid fa-circle-chevron-left" id="leftBg"></i>
+                    <i class="arrow fa-solid fa-circle-chevron-right" id="rightBg"></i>
+                </div>
+                <p class="user-field-label">Enter Name</p>
+                <input type="text" class="user-input-field" id="userInputName">
+                <button class="submit-user-data" id="modalSubmit">Play</button>
+            </div>
+        </div>
         <aside class="player" id="playerBar">
             <div class="avatar player-av" id="userAvatar">🕹️</div>
             <div class="name" id="userName">Player</div>
