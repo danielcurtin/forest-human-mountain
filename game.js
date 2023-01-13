@@ -2,7 +2,7 @@ class Game {
     constructor(player, comp) {
         this.player = player || "Player";
         this.computer = comp;
-        this.choices = ["mountain", "forest", "human", "fire", "water"];
+        this.choices = ["forest", "human", "mountain", "fire", "water"];
         this.difficulty = undefined;
         this.gameState = undefined;
     };
@@ -15,17 +15,21 @@ class Game {
 
     playRound(choice) {
         this.player.takeTurn(choice);
+        this.compChoice();
+
+        var userChoiceElement = document.querySelector(`.${this.player.choice}`);
+        var compChoiceElement = document.querySelector(`.${this.computer.choice}`);
+
         hideGame();
-        show(document.querySelector(`.${choice}`));
-        placeUserAv(document.querySelector(`.${choice}`));
+        show(userChoiceElement);
+        placeUserAv(userChoiceElement);
 
         setTimeout( () => {
-            this.compChoice();
-            show(document.querySelector(`.${this.computer.choice}`));
-            placeCompAv(document.querySelector(`.${this.computer.choice}`));
+            show(compChoiceElement);
+            placeCompAv(compChoiceElement);
             this.determineGameState();
-            showGameResults();
             this.updateWins();
+            showGameResults();
         }, 1000);
 
         setTimeout(this.resetGame, 3000);
@@ -39,39 +43,25 @@ class Game {
         };
     };
 
+    getChoiceNum(player) {
+        for (var i = 0; i < this.choices.length; i++) {
+            if (player.choice === this.choices[i]) {
+                return i + 1;
+            };
+        };
+    };
+
     determineGameState() {
-        if (this.player.choice === this.computer.choice) {
+        var userChoiceNum = this.getChoiceNum(this.player);
+        var compChoiceNum = this.getChoiceNum(this.computer);
+        var pathNum = compChoiceNum - userChoiceNum;
+
+        if (!pathNum) {
             this.gameState = "draw";
-        } else if (this.player.choice === "mountain") {
-            if (this.computer.choice === "forest" || this.computer.choice === "water") {
-                this.gameState = "loss";
-            } else {
-                this.gameState = "win";
-            };
-        } else if (this.player.choice === "forest") {
-            if (this.computer.choice === "human" || this.computer.choice === "fire") {
-                this.gameState = "loss";
-            } else {
-                this.gameState = "win";
-            };
-        } else if (this.player.choice === "human") {
-            if (this.computer.choice === "mountain" || this.computer.choice === "fire") {
-                this.gameState = "loss";
-            } else {
-                this.gameState = "win";
-            };
-        } else if (this.player.choice === "fire") {
-            if (this.computer.choice === "water" || this.computer.choice === "mountain") {
-                this.gameState = "loss";
-            } else {
-                this.gameState = "win";
-            };
-        } else if (this.player.choice === "water") {
-            if (this.computer.choice === "forest" || this.computer.choice === "human") {
-                this.gameState = "loss";
-            } else {
-                this.gameState = "win";
-            };
+        } else if (pathNum > 0 && !(pathNum % 2) || pathNum < 0 && (pathNum % 2)) {
+            this.gameState = "win";
+        } else {
+            this.gameState = "loss";
         };
     };
 
