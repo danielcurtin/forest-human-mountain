@@ -7,7 +7,7 @@
     <style> @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap'); </style>
     <script src="https://kit.fontawesome.com/6471591dde.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>Mountain Forest Human</title>
+    <title>Forest Human Mountain</title>
 </head>
 <body>
     <main>
@@ -27,12 +27,12 @@
         </div>
         <aside class="player" id="playerBar">
             <div class="avatar player-av" id="userAvatar">🕹️</div>
-            <div class="name" id="userName">Player</div>
-            <div class="wins" id="userWins">Wins: 0</div>
+            <div class="name" id="userName"></div>
+            <div class="wins" id="userWins"></div>
             <button class="change-diff-button hidden" id="changeDiff">Change Mode</button>
         </aside>
         <section class="game-board" id="gameBoardSection" data-active="false">
-            <h1 class="game-name" id="gameNameHeader">Mountain, Forest, Human</h1>
+            <h1 class="game-name" id="gameNameHeader">Forest, Human, Mountain</h1>
             <header class="game-header" id="gameState">Choose your difficulty!</header>
             <div class="game-diff classic" id="classic" data-diff="classic">
                 <h4 class="big-diff" data-diff="classic">- Classic -</h4>
@@ -42,17 +42,13 @@
             </div>
             <div class="game-diff hard" id="hard" data-diff="hard">
                 <h4 class="big-diff" data-diff="hard">- Hard -</h4>
-                🏔️ Mountain beats Human & Fire<br>
                 🌲 Forest beats Mountain & Water<br>
-                👋 Human beats Forest & Water<br>
-                🔥 Fire beats Forest & Human<br>
-                💧 Water beats Mountain & Fire<br>
+                👋 Human beats Forest & Fire<br>
+                🏔️ Mountain beats Human & Water <br>
+                🔥 Fire beats Forest & Mountain<br>
+                💧 Water beats Human & Fire<br>
             </div>
             <div class="choices-container">
-                <div class="mountain choice hidden" id="mountainOpt">
-                    <img src="https://images.unsplash.com/photo-1598438924166-6d89ca57f248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Large mountain" data-choice="mountain">
-                    <div class="choice-bg-circle" data-choice="mountain">🏔️</div>
-                </div>
                 <div class="forest choice hidden" id="forestOpt">
                     <img src="https://images.unsplash.com/photo-1539037397405-a7554159b2ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Trees in a forest" data-choice="forest">
                     <div class="choice-bg-circle" data-choice="forest">🌲</div>
@@ -60,6 +56,10 @@
                 <div class="human choice hidden" id="humanOpt">
                     <img src="https://images.unsplash.com/photo-1477146901578-40f6955116e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Sprawling grey cityscape" data-choice="human">
                     <div class="choice-bg-circle" data-choice="human">👋</div>
+                </div>
+                <div class="mountain choice hidden" id="mountainOpt">
+                    <img src="https://images.unsplash.com/photo-1598438924166-6d89ca57f248?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Large mountain" data-choice="mountain">
+                    <div class="choice-bg-circle" data-choice="mountain">🏔️</div>
                 </div>
                 <div class="fire choice hidden" id="fireOpt">
                     <img src="https://images.unsplash.com/photo-1618325508550-951512a1e82d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="campfire" data-choice="fire">
