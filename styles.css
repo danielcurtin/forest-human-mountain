@@ -9,7 +9,6 @@ body {
 
 main {
   height: 100%;
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   background: #121212;
@@ -35,6 +34,20 @@ main {
   width: 50vw;
   border-radius: 20px;
   align-items: center;
+}
+
+.av-arrow-label,
+.bg-arrow-label {
+  position: fixed;
+  top: 27.5%;
+}
+
+.av-arrow-label {
+  left: 36.6%;
+}
+
+.bg-arrow-label {
+  right: 35.7%;
 }
 
 .avatar-carousel {
@@ -67,7 +80,6 @@ main {
 .user-input-field {
   font-size: 2rem;
   height: 50%;
-  width: 100%;
   grid-area: 5 / 2 / 6 / 3;
 }
 
@@ -128,8 +140,7 @@ aside {
 
 .game-name {
   font-size: 5.8rem;
-  margin-top: 3vh;
-  margin-bottom: 1vh;
+  margin: 3vh 0 3vh 0;
   text-align: center;
 }
 
@@ -141,7 +152,6 @@ aside {
 
 .game-diff {
   width: 22%;
-  color: white;
   background-color: rgba(0 0 0 / 35%);
   font-size: 1.3rem;
   position: absolute;
@@ -165,10 +175,9 @@ aside {
   top: 60%;
 }
 
-.big-diff {
+.diff-type {
   font-size: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0 1rem 0;
 }
 
 .change-diff-button {

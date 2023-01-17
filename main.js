@@ -18,17 +18,13 @@ var human = document.querySelector("#humanOpt");
 var fire = document.querySelector("#fireOpt");
 var water = document.querySelector("#waterOpt");
 
-var avatars = ["🕹️", "🐺", "🐣", "🦁", "🧸", "🎃", "⛄️", "🥨", "🍔", "🍕", "🎂"];
-var bgColors = ["#242424", "firebrick", "maroon", "orange", "gold", "goldenrod", "darkgreen", "seagreen", "lightskyblue", "steelblue", "lightpink","fuchsia", "orchid", "slateblue"];
-var userPlayer = new Player();
-var compPlayer = new Player("Bot", "👾");
-var game = new Game(userPlayer, compPlayer);
+var game = new Game();
 
 
 modal.addEventListener("click", event => {
     if (event.target.id === "modalSubmit") {
         hide(modal);
-        updateUser();
+        game.player.updateUser();
         displayUser();
     } else if (event.target.id === "leftAv") {
         decrementAvatar();
@@ -42,19 +38,18 @@ modal.addEventListener("click", event => {
 });
 
 gameBoard.addEventListener("click", event => {
-    if (gameBoard.dataset.active === "true") {
+    if (game.active) {
         return;
     } else if (event.target.dataset.diff) {
         game.updateDiff(event.target.dataset.diff);
         showGame();
     } else if (event.target.dataset.choice) {
         game.playRound(event.target.dataset.choice);
-        toggleActiveState();
     };
 });
 
 playerBar.addEventListener("click", event => {
-    if (gameBoard.dataset.active === "true") {
+    if (game.active) {
         return;
     } else if (event.target.id === "changeDiff") {
         changeDiffMenu();
@@ -71,30 +66,30 @@ function show(element) {
 };
 
 function incrementAvatar() {
-    if (selectedAvatar.dataset.avatar * 1 + 1 < avatars.length) {
+    if (selectedAvatar.dataset.avatar * 1 + 1 < game.player.avatars.length) {
         selectedAvatar.dataset.avatar++;
-        selectedAvatar.innerText = `${avatars[selectedAvatar.dataset.avatar]}`;
+        selectedAvatar.innerText = game.player.avatars[selectedAvatar.dataset.avatar];
     };
 };
 
 function decrementAvatar () {
     if (selectedAvatar.dataset.avatar - 1 >= 0) {
         selectedAvatar.dataset.avatar--;
-        selectedAvatar.innerText = `${avatars[selectedAvatar.dataset.avatar]}`;
+        selectedAvatar.innerText = game.player.avatars[selectedAvatar.dataset.avatar];
     };
 };
 
 function incrementBg() {
-    if (selectedAvatar.dataset.bg * 1 + 1 < bgColors.length) {
+    if (selectedAvatar.dataset.bg * 1 + 1 < game.player.bgColors.length) {
         selectedAvatar.dataset.bg++;
-        selectedAvatar.style.background = `${bgColors[selectedAvatar.dataset.bg]}`;
+        selectedAvatar.style.background = game.player.bgColors[selectedAvatar.dataset.bg];
     };
 };
 
 function decrementBg() {
     if (selectedAvatar.dataset.bg - 1 >= 0) {
         selectedAvatar.dataset.bg--;
-        selectedAvatar.style.background = `${bgColors[selectedAvatar.dataset.bg]}`;
+        selectedAvatar.style.background = game.player.bgColors[selectedAvatar.dataset.bg];
     };
 };
 
@@ -119,37 +114,16 @@ function hideGame() {
     hide(water);
 };
 
-function toggleActiveState() {
-    if (gameBoard.dataset.active === "true") {
-        gameBoard.dataset.active = "false";
-    } else {
-        gameBoard.dataset.active = "true";
-    };
-};
-
-function updateUser() {
-    var userInputName = document.querySelector("#userInputName");
-
-    if (userInputName.value === "") {
-        userPlayer.name = "Player";
-    } else {
-        userPlayer.name = userInputName.value;
-    };
-
-    userPlayer.token = avatars[selectedAvatar.dataset.avatar];
-    userPlayer.bg = bgColors[selectedAvatar.dataset.bg];
-};
-
 function displayUser() {
-    userAv.innerText = userPlayer.token;
-    userAv.style.background = userPlayer.bg;
-    userDisplayName.innerText = userPlayer.name;
+    userAv.innerText = game.player.token;
+    userAv.style.background = game.player.bg;
+    userDisplayName.innerText = game.player.name;
     updateWinsDisplay();
 };
 
 function updateWinsDisplay() {
-    userWins.innerText = `Wins: ${userPlayer.wins}`;
-    compWins.innerText = `Wins: ${compPlayer.wins}`;
+    userWins.innerText = `Wins: ${game.player.wins}`;
+    compWins.innerText = `Wins: ${game.computer.wins}`;
 };
 
 function changeDiffMenu() {
@@ -165,8 +139,8 @@ function placeUserAv(choiceElement) {
 
     userChoiceAv.setAttribute("class", "avatar");
     userChoiceAv.classList.add("temp");
-    userChoiceAv.innerText = userPlayer.token;
-    userChoiceAv.style.background = userPlayer.bg;
+    userChoiceAv.innerText = game.player.token;
+    userChoiceAv.style.background = game.player.bg;
     choiceElement.appendChild(userChoiceAv);
 };
 
@@ -176,7 +150,7 @@ function placeCompAv(choiceElement) {
     compChoiceAv.setAttribute("class", "avatar");
     compChoiceAv.classList.add("comp-player-av");
     compChoiceAv.classList.add("temp");
-    compChoiceAv.innerText = compPlayer.token;
+    compChoiceAv.innerText = game.computer.token;
     choiceElement.appendChild(compChoiceAv);
 };
 
@@ -192,8 +166,8 @@ function showGameResults() {
     if (game.gameState === "draw") {
         gameHeader.innerText = "🟡 It's a draw! 🟡";
     } else if (game.gameState === "win") {
-        gameHeader.innerText = `🟢 You win, ${userPlayer.name}! 🟢`;
+        gameHeader.innerText = `🟢 You win, ${game.player.name}! 🟢`;
     } else if (game.gameState === "loss") {
-        gameHeader.innerText = `🔴 ${compPlayer.name} won 🔴`;
+        gameHeader.innerText = `🔴 ${game.computer.name} won 🔴`;
     };
 };
