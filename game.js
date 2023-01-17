@@ -1,10 +1,11 @@
 class Game {
-    constructor(player, comp) {
-        this.player = player || "Player";
-        this.computer = comp;
+    constructor() {
+        this.player = new Player();
+        this.computer = new Player("Bot", "👾");
         this.choices = ["forest", "human", "mountain", "fire", "water"];
         this.difficulty = undefined;
         this.gameState = undefined;
+        this.active = false;
     };
 
     updateDiff(diff) {
@@ -13,9 +14,10 @@ class Game {
         this.difficulty = diff;
     };
 
-    playRound(choice) {
-        this.player.takeTurn(choice);
+    playRound(userChoice) {
+        this.player.takeTurn(userChoice);
         this.compChoice();
+        this.toggleActiveState();
 
         var userChoiceElement = document.querySelector(`.${this.player.choice}`);
         var compChoiceElement = document.querySelector(`.${this.computer.choice}`);
@@ -32,7 +34,9 @@ class Game {
             showGameResults();
         }, 1000);
 
-        setTimeout(this.resetGame, 3000);
+        setTimeout( () => {
+            this.resetGame();
+        }, 3000);
     };
 
     compChoice() {
@@ -75,10 +79,14 @@ class Game {
         updateWinsDisplay();
     };
 
+    toggleActiveState() {
+        this.active ? this.active = false : this.active = true;
+    };
+
     resetGame() {
         hideGame();
         showGame();
         deleteChoiceAvs();
-        toggleActiveState();
+        this.toggleActiveState();
     };
 };
