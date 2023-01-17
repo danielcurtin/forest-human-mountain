@@ -37,6 +37,20 @@ main {
   align-items: center;
 }
 
+.av-arrow-label,
+.bg-arrow-label {
+  position: fixed;
+  top: 27.5%;
+}
+
+.av-arrow-label {
+  left: 36.6%;
+}
+
+.bg-arrow-label {
+  right: 35.7%;
+}
+
 .avatar-carousel {
   display: flex;
   grid-area: 2 / 2 / 3 / 3;
