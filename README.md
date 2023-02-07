@@ -1,4 +1,4 @@
-<h1 align="center"> Rock, Paper, Scissors</h1>
+<h1 align="center"> Forest, Human, Mountain</h1>
 
 ### Abstract
 This app is a rebuild of the classic Rock Paper Scissors game, with the user being able to play against a computer. This app lets the user customize their avatar and keeps track of their, and the computers, wins individually each session. The user can choose to play the classic 3 choice version, or can opt to play the more difficult 5 choice version for more of a challenge - double the chance to win, but also double the chance to lose. Wins will be tracked across versions, and it's clear as to who chose what and who won each round.
